@@ -65,6 +65,8 @@ def packet_callback(pkt):
                     host_uniq = tag.tag_value
             print("Client->Server   |   Discovery Initiation")
             print("Server->Client   |   Discovery Offer")
+            if host_uniq is None:
+                host_uniq = ""
             sendp(eth_discovery /
                   PPPoED(code=PADO, sessionid=0) /
                   PPPoETag(tag_type=Service_Name, tag_value=service_name) /
